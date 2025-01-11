@@ -1,0 +1,106 @@
+.naslov {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: black;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.no-users {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.no-users p {
+  color: white;
+  background-color: gray;
+  padding: 10px;
+  margin: 30px 250px;
+  border-radius: 10px;
+}
+
+.tabela-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: gray;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+/* Tabela */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: gray;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+td {
+  padding: 10px;
+  font-size: 1rem;
+  color: #343a40;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Dugmad */
+.button-container button {
+  display: inline-block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+button mat-icon {
+  font-size: 1.2rem;
+}
+
+/* Filtriranje */
+.filter-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.filter-section label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filter-section select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.alert {
+  text-align: center;
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 5px;
+  max-width: 600px;
+  font-size: 1rem;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

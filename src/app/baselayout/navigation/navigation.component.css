@@ -1,0 +1,77 @@
+/* Osnovne postavke za navigaciju */
+nav {
+  height: 60px;
+  background-color: #6db340;
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Linkovi u navigaciji */
+.nav-link {
+  color: #ffffff;
+  font-weight: 500;
+  margin-right: 15px;
+  text-decoration: none;
+  position: relative; /* Potrebno za pozicioniranje linije */
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 5px; /* Linija se pojavljuje neposredno ispod teksta */
+  left: 0;
+  width: 0; /* Početna širina linije */
+  height: 3px;
+  background-color: #314d89;
+  transition: width 0.3s ease; /* Animacija za širenje linije */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Linija se širi na celu širinu teksta pri hoveru */
+}
+
+/* Profilna slika */
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1; /* Čuva proporcije slike */
+  object-fit: cover;
+  margin-right: 10px;
+  border: 2px solid #ffffff;
+}
+
+/* Defaultni ikon za profil */
+.default-icon {
+  font-size: 40px;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex; /* Fleksibilno poravnanje */
+  align-items: center; /* Centriranje ikone vertikalno */
+  justify-content: center; /* Centriranje ikone horizontalno */
+}
+
+/* Dugme za otvaranje menija */
+.menu-btn {
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  background-color: #314d89;
+}
+
+/* Mat-menu stilovi */
+.mat-menu-item {
+  color: black;
+  font-weight: 500;
+}
+
+.mat-menu-item:hover {
+  background-color: whitesmoke;
+}

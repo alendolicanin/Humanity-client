@@ -23,6 +23,17 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 
+import { FooterComponent } from './baselayout/footer/footer.component';
+import { HeaderComponent } from './baselayout/header/header.component';
+import { NavigationComponent } from './baselayout/navigation/navigation.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { LoginComponent } from './forms/login/login.component';
+import { RegisterComponent } from './forms/register/register.component';
+import { HomeComponent } from './pages/home/home.component';
+import { UsersComponent } from './pages/users/users.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { UserAproveComponent } from './pages/user-aprove/user-aprove.component';
+
 export function getSrPaginatorIntl() {
   const paginatorIntl = new MatPaginatorIntl();
   paginatorIntl.itemsPerPageLabel = 'Stavki po stranici:';
@@ -46,7 +57,19 @@ export function getSrPaginatorIntl() {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    NavigationComponent,
+    ConfirmationComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    UsersComponent,
+    UserDetailsComponent,
+    UserAproveComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

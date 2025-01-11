@@ -1,0 +1,119 @@
+/* Sekcija za detalje korisnika */
+#sec {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+/* Pravougaonik sa ulogom korisnika */
+.user-role {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Ikonica za anonimne korisnike */
+.anonymous-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #fbc901;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  color: #343a40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.anonymous-indicator mat-icon {
+  font-size: 1.2rem;
+}
+
+/* Boje za različite uloge */
+.special-user-1-text {
+  background-color: #fbc901; /* Zlatna za Donatore */
+  color: #343a40;
+}
+
+.special-user-2-text {
+  background-color: #314d89; /* Plava za Primaoce */
+  color: #ffffff;
+}
+
+.special-user-3-text {
+  background-color: #6db340; /* Zelena za Kurire */
+  color: #ffffff;
+}
+
+/* Zaglavlje sa profilnom slikom i imenom */
+.user-details-header {
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  height: auto;
+  width: 150px;
+  aspect-ratio: 1 / 1; /* Čuva proporcije slike */
+  margin: 0 auto 15px;
+  object-fit: cover; /* Sprečava zbijanje slike */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Sadržaj detalja korisnika */
+.user-details-content {
+  text-align: left;
+  font-size: 1rem;
+  color: #495057;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+/* Akcione dugmad */
+.action-buttons {
+  margin-top: 20px;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #d9534f; /* Crvena za brisanje */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c9302c;
+}

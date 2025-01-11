@@ -1,0 +1,83 @@
+.main-container {
+  display: flex;
+  gap: 20px;
+  margin: 20px;
+  flex-wrap: wrap; /* Pravougaonici se slažu u redove na manjim ekranima */
+}
+
+.info-box {
+  background: linear-gradient(135deg, #6db340, #314d89);
+  color: white;
+  flex: 1;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  height: 500px; /* Prilagođena visina */
+}
+
+.logo-section {
+  display: flex;
+  align-items: center; /* Vertikalno centriranje elemenata unutar logo-section */
+  justify-content: center; /* Horizontalno centriranje elemenata unutar logo-section */
+  gap: 15px; /* Razmak između logoa i naslova */
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain; /* Osigurava da se proporcije slike očuvaju */
+  border-radius: 50%;
+  background-color: white;
+  padding: 3px; /* Razmak između slike i ivice pozadine */
+  display: block; /* Osigurava da se tretira kao blok element */
+}
+
+.title {
+  font-size: 2.2em;
+  margin: 0;
+  font-weight: bold;
+  color: #072154; /* Boja unutrašnjosti teksta */
+}
+
+.info-text {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-top: 50px;
+  text-align: justify; /* Poravnava tekst s obe strane */
+}
+
+.info-text p {
+  margin-bottom: 15px;
+  text-align: justify; /* Obezbeđuje da i paragrafi budu poravnati */
+}
+
+.info-text strong {
+  font-size: 1.2em;
+  display: block;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.image-slider {
+  flex: 1;
+  background-color: #e6f3e6;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  height: 500px; /* Postavljena visina slidera */
+}
+
+.image-slider img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.5s ease-in-out;
+}

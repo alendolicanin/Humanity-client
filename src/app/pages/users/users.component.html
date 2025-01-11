@@ -1,0 +1,68 @@
+<section class="featured-section col-md-8" id="section">
+  <div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Lista korisnika</h1>
+        <p id="p">
+          Ovo je lista svih aktivnih korisnika.
+          <span class="special-user-1-text">Donatori</span> imaju zlatni okvir,
+          <span class="special-user-2-text">Primaoci</span> plavi okvir, a
+          <span class="special-user-3-text">Kuriri</span> zeleni okvir.
+        </p>
+      </div>
+    </div>
+    <br />
+
+    <!-- Filter sekcija -->
+    <div class="filter-container">
+      <label for="roleFilter">Filtriraj prema ulozi:</label>
+      <select
+        id="roleFilter"
+        [(ngModel)]="roleFilter"
+        (change)="applyFilters()"
+        class="filter-select"
+      >
+        <option value="">Svi</option>
+        <option value="0">Donator</option>
+        <option value="1">Primalac</option>
+        <option value="2">Kurir</option>
+      </select>
+
+      <label for="searchQuery">Pretraga:</label>
+      <input
+        type="text"
+        id="searchQuery"
+        [(ngModel)]="searchQuery"
+        (input)="applyFilters()"
+        placeholder="Unesite ime ili prezime"
+        class="filter-input"
+      />
+    </div>
+
+    <!-- Lista korisnika -->
+    <div *ngIf="filteredUsers.length === 0" class="no-users">
+      <p>Trenutno nema korisnika za prikaz.</p>
+    </div>
+    <div class="row justify-content-center" id="users">
+      <div class="col-lg-5" *ngFor="let u of filteredUsers">
+        <div
+          class="user-card"
+          (click)="openInfo(u.id)"
+          [ngClass]="{
+            'special-user-1': u.role === 0,
+            'special-user-2': u.role === 1,
+            'special-user-3': u.role === 2
+          }"
+        >
+          <mat-card>
+            <mat-card-content>
+              <p>Ime: {{ u.firstName }}</p>
+              <p>Prezime: {{ u.lastName }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</section>

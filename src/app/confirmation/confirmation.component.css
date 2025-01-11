@@ -1,0 +1,20 @@
+button {
+  margin: 0 auto;
+  display: block;
+  width: 30%;
+  max-width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+.cancel {
+  background-color: rgb(170, 62, 62);
+  color: #fff;
+}
+.confirm {
+  background-color: rgb(47, 186, 47);
+  color: #fff;
+}

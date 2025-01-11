@@ -1,0 +1,60 @@
+<div class="section" id="sec">
+  <div class="container">
+    <!-- Pravougaonik sa ulogom korisnika -->
+    <div
+      class="user-role"
+      [ngClass]="{
+        'special-user-1-text': userDetails.role === 0,
+        'special-user-2-text': userDetails.role === 1,
+        'special-user-3-text': userDetails.role === 2
+      }"
+    >
+      {{
+        userDetails.role === 0
+          ? "Donator"
+          : userDetails.role === 1
+          ? "Primalac"
+          : "Kurir"
+      }}
+    </div>
+
+    <!-- Ikonica za anonimne donatore -->
+    <div
+      *ngIf="userDetails.role === 0 && userDetails.isAnonymous"
+      class="anonymous-indicator"
+      title="Ovaj donator je izabrao da bude anoniman."
+    >
+      <mat-icon>visibility_off</mat-icon>
+    </div>
+
+    <div class="user-details-header">
+      <ng-container *ngIf="userDetails.image != null">
+        <img
+          [src]="userDetails.image"
+          alt="Profilna slika"
+          class="profile-image"
+        />
+      </ng-container>
+      <ng-container *ngIf="userDetails.image === null">
+        <img
+          src="../../../assets/images/profile.jpg"
+          alt="Zamenska slika"
+          class="profile-image"
+        />
+      </ng-container>
+      <h1 class="user-name">
+        {{ userDetails.firstName }} {{ userDetails.lastName }}
+      </h1>
+    </div>
+
+    <div class="user-details-content">
+      <p><strong>Grad:</strong> {{ userDetails.city }}</p>
+      <p><strong>Godine:</strong> {{ userDetails.age }}</p>
+      <p><strong>E-mail:</strong> {{ userDetails.email }}</p>
+    </div>
+
+    <div class="action-buttons">
+      <button (click)="openConfirmationDialog()">Obriši korisnika</button>
+    </div>
+  </div>
+</div>

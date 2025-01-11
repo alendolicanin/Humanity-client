@@ -1,0 +1,61 @@
+nav {
+  height: 90px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo na levoj i linkovi na desnoj strani */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo levo, linkovi desno */
+}
+
+.site-logo {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-logo img {
+  height: 85px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 1.5em;
+  color: #6db340;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #314d89;
+  font-weight: bold;
+  position: relative; /* Potrebno za pozicioniranje linije */
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* Linija se pojavljuje neposredno ispod teksta */
+  left: 0;
+  width: 0; /* Početna širina linije */
+  height: 4px;
+  background-color: #6db340; /* Zelena boja linije */
+  transition: width 0.3s ease; /* Animacija za širenje linije */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Linija se širi na celu širinu teksta pri hoveru */
+}

@@ -1,0 +1,224 @@
+<form [formGroup]="form" (ngSubmit)="register()">
+  <div class="container">
+    <div class="text-center">
+      <!-- Spinner prikazan tokom učitavanja (kada je loading true) -->
+      <div
+        class="spinner-container d-flex justify-content-center"
+        *ngIf="loading"
+      >
+        <mat-spinner></mat-spinner>
+      </div>
+      <h2 class="text-theme-primary">Registracija</h2>
+      <p>Molimo vas da popunite ovaj obrazac kako biste kreirali nalog.</p>
+      <!-- Poruka greške -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+
+    <label for="firstName"><b>Ime</b></label>
+    <input
+      formControlName="firstName"
+      id="firstName"
+      type="text"
+      placeholder="Unesite vaše ime"
+    />
+    <div *ngIf="Fname?.touched && Fname?.invalid">
+      <div *ngIf="Fname?.errors?.['required']" class="alert alert-warning">
+        Ime je obavezno.
+      </div>
+      <div *ngIf="Fname?.errors?.['minlength']" class="alert alert-warning">
+        Ime mora imati najmanje 3 karaktera.
+      </div>
+      <div *ngIf="Fname?.errors?.['firstName']" class="alert alert-warning">
+        Nije odgovarajuće.
+      </div>
+      <div
+        *ngIf="Fname?.errors?.['cannotContaintSpace']"
+        class="alert alert-warning"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+    </div>
+
+    <label for="lastName"><b>Prezime</b></label>
+    <input
+      formControlName="lastName"
+      id="lastName"
+      type="text"
+      placeholder="Unesite vaše prezime"
+    />
+    <div *ngIf="Lname?.touched && Lname?.invalid">
+      <div *ngIf="Lname?.errors?.['required']" class="alert alert-warning">
+        Prezime je obavezno.
+      </div>
+      <div *ngIf="Lname?.errors?.['minlength']" class="alert alert-warning">
+        Prezime mora imati najmanje 3 karaktera.
+      </div>
+      <div *ngIf="Lname?.errors?.['lastName']" class="alert alert-warning">
+        Nije odgovarajuće.
+      </div>
+      <div
+        *ngIf="Lname?.errors?.['cannotContaintSpace']"
+        class="alert alert-warning"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+    </div>
+
+    <label for="city"><b>Grad</b></label>
+    <input
+      formControlName="city"
+      id="city"
+      type="text"
+      placeholder="Unesite vaš grad"
+    />
+    <div *ngIf="City?.touched && City?.invalid">
+      <div *ngIf="City?.errors?.['required']" class="alert alert-warning">
+        Grad je obavezan.
+      </div>
+      <div *ngIf="City?.errors?.['minlength']" class="alert alert-warning">
+        Grad mora imati najmanje 2 karaktera.
+      </div>
+      <div *ngIf="City?.errors?.['city']" class="alert alert-warning">
+        Nije odgovarajuće.
+      </div>
+    </div>
+
+    <label for="age"><b>Godine</b></label>
+    <input
+      formControlName="age"
+      id="age"
+      type="number"
+      placeholder="Unesite vaše godine"
+    />
+    <div *ngIf="Age?.touched && Age?.invalid">
+      <div *ngIf="Age?.errors?.['required']" class="alert alert-warning">
+        Godine su obavezne.
+      </div>
+      <div
+        *ngIf="Age?.errors?.['min'] || Age?.errors?.['max']"
+        class="alert alert-warning"
+      >
+        Godine moraju biti između 18 i 65.
+      </div>
+    </div>
+
+    <label for="email"><b>Email</b></label>
+    <input
+      formControlName="email"
+      id="email"
+      type="text"
+      placeholder="Unesite vaš email"
+    />
+    <div *ngIf="Email?.touched && Email?.invalid">
+      <div *ngIf="Email?.errors?.['required']" class="alert alert-warning">
+        Email je obavezan.
+      </div>
+      <div *ngIf="Email?.errors?.['minlength']" class="alert alert-warning">
+        Email mora imati najmanje 3 karaktera.
+      </div>
+      <div *ngIf="Email?.errors?.['email']" class="alert alert-warning">
+        Molimo unesite ispravan email.
+      </div>
+      <div
+        *ngIf="Email?.errors?.['cannotContaintSpace']"
+        class="alert alert-warning"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+    </div>
+
+    <label for="password"><b>Lozinka</b></label>
+    <input
+      formControlName="password"
+      id="password"
+      type="password"
+      placeholder="Unesite vašu lozinku"
+    />
+    <p class="pass-info">
+      Lozinka mora sadržavati najmanje: jedno veliko slovo, jedan broj i jedan
+      poseban znak. Mora imati najmanje 8 karaktera i ne sme sadržavati razmake.
+    </p>
+    <div *ngIf="Password?.touched && Password?.invalid">
+      <div *ngIf="Password?.errors?.['required']" class="alert alert-warning">
+        Lozinka je obavezna.
+      </div>
+      <div *ngIf="Password?.errors?.['minlength']" class="alert alert-warning">
+        Lozinka mora imati najmanje 8 karaktera.
+      </div>
+      <div *ngIf="Password?.errors?.['maxlength']" class="alert alert-warning">
+        Lozinka može imati najviše 16 karaktera.
+      </div>
+      <div
+        *ngIf="Password?.errors?.['cannotContaintSpace']"
+        class="alert alert-warning"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+      <div *ngIf="Password?.errors?.['upperCase']" class="alert alert-warning">
+        Mora sadržavati veliko slovo.
+      </div>
+      <div *ngIf="Password?.errors?.['number']" class="alert alert-warning">
+        Mora sadržavati jedan broj.
+      </div>
+      <div
+        *ngIf="Password?.errors?.['specialCaracter']"
+        class="alert alert-warning"
+      >
+        Mora sadržavati jedan poseban znak.
+      </div>
+    </div>
+
+    <label for="confirmPassword"><b>Potvrdite lozinku</b></label>
+    <input
+      formControlName="confirmPassword"
+      id="confirmPassword"
+      type="password"
+      placeholder="Potvrdite vašu lozinku"
+    />
+    <div
+      *ngIf="ConfirmPassword?.touched && (ConfirmPassword?.invalid || form?.errors?.['passwordMismatch'])"
+    >
+      <div
+        *ngIf="ConfirmPassword?.errors?.['required']"
+        class="alert alert-warning"
+      >
+        Potvrda lozinke je obavezna.
+      </div>
+      <div
+        *ngIf="form?.errors?.['passwordMismatch']"
+        class="alert alert-warning"
+      >
+        Lozinke se ne poklapaju.
+      </div>
+    </div>
+
+    <label for="role"><b>Registrujem se kao</b></label>
+    <select formControlName="role" id="role" class="role">
+      <option value="0">Donator</option>
+      <option value="1">Primalac</option>
+      <option value="2">Kurir</option>
+    </select>
+
+    <div class="isAnonymous">
+      <label *ngIf="isDonor">
+        <b>Registruj se anonimno</b>
+      </label>
+      <input
+        *ngIf="isDonor"
+        formControlName="isAnonymous"
+        type="checkbox"
+        id="isAnonymous"
+      />
+    </div>
+
+    <button type="submit" class="registerbtn">Registruj se</button>
+    <div class="container signin">
+      <span>
+        Već imate nalog?
+        <a routerLink="/login" routerLinkActive="active">Prijavite se ovde</a>
+      </span>
+    </div>
+  </div>
+</form>

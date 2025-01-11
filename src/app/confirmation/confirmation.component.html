@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Potvrda</h2>
+<div mat-dialog-content>
+  <p>Da li ste sigurni da želite da nastavite sa akcijom?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" class="cancel">Otkaži</button>
+  <button mat-button color="warn" (click)="onConfirm()" class="confirm">
+    Da
+  </button>
+</div>

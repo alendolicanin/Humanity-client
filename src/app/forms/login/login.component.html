@@ -1,0 +1,72 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+  <div class="container">
+    <div class="text-center">
+      <!-- Spinner prikazan tokom učitavanja (kada je loading true) -->
+      <div
+        class="spinner-container d-flex justify-content-center"
+        *ngIf="loading"
+      >
+        <mat-spinner></mat-spinner>
+      </div>
+      <h2 class="text-theme-primary">Prijava</h2>
+      <p>Molimo unesite vaše podatke za prijavu.</p>
+      <!-- Poruka greške -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Uspešna registracija -->
+      <div *ngIf="success" class="alert alert-success">
+        Sačekajte da administrator odobri vaš nalog.
+      </div>
+    </div>
+
+    <label for="email"><b>Email</b></label>
+    <input
+      formControlName="email"
+      id="email"
+      type="text"
+      placeholder="Unesite vaš email"
+    />
+    <div *ngIf="Email?.touched && Email?.invalid">
+      <div *ngIf="Email?.errors?.['required']" class="alert alert-warning">
+        Email je obavezan.
+      </div>
+      <div *ngIf="Email?.errors?.['email']" class="alert alert-warning">
+        Molimo unesite ispravan email.
+      </div>
+      <div
+        *ngIf="Email?.errors?.['cannotContaintSpace']"
+        class="alert alert-warning"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+    </div>
+
+    <label for="password"><b>Lozinka</b></label>
+    <input
+      formControlName="password"
+      id="password"
+      type="password"
+      placeholder="Unesite vašu lozinku"
+    />
+    <div *ngIf="Password?.touched && Password?.invalid">
+      <div *ngIf="Password?.errors?.['required']" class="alert alert-warning">
+        Lozinka je obavezna.
+      </div>
+      <div
+        *ngIf="Password?.errors?.['cannotContaintSpace']"
+        class="alert alert-warning"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+    </div>
+
+    <button type="submit">Prijavite se</button>
+    <div class="container">
+      <span>
+        <a routerLink="/register" routerLinkActive="active">Nemate nalog?</a>
+      </span>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="collapse navbar-collapse justify-content-between">
+      <!-- Linkovi za navigaciju -->
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="userService.isAdmin()">
+          <a routerLink="/approve" class="nav-link" routerLinkActive="active"
+            >Korisnici za odobrenje</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="userService.isAdmin()">
+          <a
+            routerLink="/list-of-users"
+            class="nav-link"
+            routerLinkActive="active"
+            >Lista korisnika</a
+          >
+        </li>
+        <li
+          class="nav-item"
+          *ngIf="
+            userService.isDonor() ||
+            userService.isAdmin() ||
+            userService.isCourier()
+          "
+        >
+          <a routerLink="/donations" class="nav-link" routerLinkActive="active"
+            >Lista donacija</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="userService.isDonor()">
+          <a
+            routerLink="/thank-you-notes"
+            class="nav-link"
+            routerLinkActive="active"
+            >Zahvalnice od primalaca</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="userService.isRecipient()">
+          <a
+            routerLink="/received-donations"
+            class="nav-link"
+            routerLinkActive="active"
+            >Pregled primljenih donacija</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="userService.isRecipient()">
+          <a
+            routerLink="/unconfirmed-donations"
+            class="nav-link"
+            routerLinkActive="active"
+            >Donacije za potvrdu</a
+          >
+        </li>
+      </ul>
+
+      <!-- Profilna slika i meni -->
+      <div class="user-menu d-flex align-items-center">
+        <mat-icon
+          *ngIf="!userService.hasImage() && userService.isLogedIn()"
+          aria-hidden="false"
+          aria-label="User icon"
+          class="default-icon"
+          >account_circle</mat-icon
+        >
+        <img
+          *ngIf="userService.hasImage() && userService.isLogedIn()"
+          class="profile-image"
+          [src]="user.image"
+          alt="Profilna slika"
+        />
+
+        <button
+          *ngIf="userService.isLogedIn()"
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="menu-btn"
+        >
+          {{ user.firstName }} {{ user.lastName }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openInfo(user.id)">
+            Izmeni profil
+          </button>
+          <button mat-menu-item (click)="ChangePassword(user.id)">
+            Promeni lozinku
+          </button>
+          <button mat-menu-item (click)="logout()">Odjava</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</nav>

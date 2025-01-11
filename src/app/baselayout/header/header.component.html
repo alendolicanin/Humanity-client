@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm">
+  <div class="container">
+    <a routerLink="" class="site-logo">
+      <img src="assets/images/humanity-logo.png" alt="Humanity Logo" />
+      <span class="logo-text">Humanity</span>
+    </a>
+
+    <div class="nav-links">
+      <a *ngIf="!userService.isLogedIn()" routerLink="/login" class="nav-link">
+        PRIJAVA / REGISTRACIJA
+      </a>
+    </div>
+  </div>
+</nav>

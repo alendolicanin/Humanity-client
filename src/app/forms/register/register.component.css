@@ -1,0 +1,59 @@
+.container {
+  padding: 20px;
+}
+
+form {
+  border: 3px solid black;
+  width: 40%;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+.role {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.isAnonymous {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Razmak između checkbox-a i teksta */
+  margin: 12px 0;
+}
+
+.registerbtn {
+  background-color: #6db340;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.registerbtn:hover {
+  opacity: 0.8;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #314d89;
+}
+
+.pass-info {
+  color: #314d89;
+  font-size: x-small;
+  text-align: right;
+}
