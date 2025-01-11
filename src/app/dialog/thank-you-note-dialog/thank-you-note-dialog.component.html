@@ -7,8 +7,8 @@
       <textarea id="message" formControlName="message" rows="4"></textarea>
       <div
         *ngIf="
-          thankYouForm.controls.message.touched &&
-          thankYouForm.controls.message.invalid
+          thankYouForm.controls['message'].touched &&
+          thankYouForm.controls['message'].invalid
         "
         class="error"
       >
@@ -26,8 +26,8 @@
       />
       <div
         *ngIf="
-          thankYouForm.controls.rating.touched &&
-          thankYouForm.controls.rating.invalid
+          thankYouForm.controls['rating'].touched &&
+          thankYouForm.controls['rating'].invalid
         "
         class="error"
       >
