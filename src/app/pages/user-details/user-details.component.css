@@ -117,3 +117,14 @@ button {
 button:hover {
   background-color: #c9302c;
 }
+
+.error-message {
+  margin: 25px 0;
+  color: #d9534f;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #ffe6e6;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}

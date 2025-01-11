@@ -14,6 +14,7 @@ export class UserDetailsComponent {
   userDetails: any = {}; // Objekat za čuvanje podataka o korisniku
   id: string = ''; // ID korisnika koji će se dohvatiti
   user: any = []; // Trenutno prijavljeni korisnik
+  errorMessage: string = ''; // Poruka o grešci koja će se prikazati ako korisnik ne može biti obrisan
 
   constructor(
     private router: ActivatedRoute, // Za pristup parametrima rute (npr. ID korisnika)
@@ -29,7 +30,6 @@ export class UserDetailsComponent {
       this.UserService.getUserById(this.id).subscribe(
         (data) => {
           this.userDetails = data; // Čuva podatke korisnika dohvaćene sa servera
-          console.log(this.userDetails); // Loguje podatke korisnika u konzolu
         },
         (err) => {
           console.log(err); // Loguje greške ako dođe do problema sa API pozivom
@@ -53,8 +53,6 @@ export class UserDetailsComponent {
       if (result) {
         // Ako je korisnik potvrdio akciju, poziva metodu `delete` za brisanje korisnika
         this.delete();
-        // Navigira nazad na početnu stranicu nakon brisanja
-        this.Router.navigate([`/`]);
       }
     });
   }
@@ -64,9 +62,12 @@ export class UserDetailsComponent {
     this.UserService.deleteUser(this.id).subscribe(
       (res) => {
         console.log(res); // Loguje odgovor servera nakon brisanja korisnika
+        this.Router.navigate(['/']); // Navigira nazad na početnu stranicu nakon uspešnog brisanja
       },
       (err) => {
         console.log(err); // Loguje grešku ako dođe do problema sa brisanjem
+        this.errorMessage =
+          'Korisnik ne može biti obrisan jer ima već distribuisane donacije i zahvalnice.';
       }
     );
   }
