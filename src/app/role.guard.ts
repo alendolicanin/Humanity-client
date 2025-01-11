@@ -35,10 +35,11 @@ export class RoleGuard implements CanActivate {
 
     // Ako token postoji i nije istekao, proverava se uloga korisnika
     const user = JSON.parse(localStorage.getItem('user') || '{}'); // Učitava se objekat korisnika iz localStorage
-    const userRole = user.role; // Pretpostavlja se da korisnik ima ulogu definisanu u polju 'role'
+    const userRole =
+      typeof user.role === 'string' ? Number(user.role) : user.role; // Pretpostavlja se da korisnik ima ulogu definisanu u polju 'role'
 
     // Proverava dozvoljenu ulogu za pristup ruti, koja je definisana u 'data' objektu rute
-    const allowedRole = route.data['allowedRole']; // Dozvoljena uloga se definiše u konfiguraciji rute (npr. u app-routing.module.ts)
+    const allowedRoles = route.data['allowedRole']; // Dozvoljena uloga se definiše u konfiguraciji rute (npr. u app-routing.module.ts)
 
     // Proverava da li je korisnik aktivan
     if (!user.IsActive) {
@@ -46,12 +47,15 @@ export class RoleGuard implements CanActivate {
       return false;
     }
 
-    // Proverava da li je uloga korisnika dozvoljena za ovu rutu
-    if (userRole === allowedRole) {
-      return true; // Ako uloga odgovara dozvoljenoj, pristup se odobrava
-    } else {
-      // Ako korisnik nema odgovarajuću ulogu, preusmerava se na stranicu za prijavu (ili neku drugu, po želji)
-      return this.router.navigate(['/login']);
+    if (Array.isArray(allowedRoles)) {
+      if (allowedRoles.includes(userRole)) {
+        return true;
+      }
+    } else if (userRole === allowedRoles) {
+      return true;
     }
+
+    this.router.navigate(['/login']);
+    return false;
   }
 }
