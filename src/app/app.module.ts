@@ -26,13 +26,13 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { FooterComponent } from './baselayout/footer/footer.component';
 import { HeaderComponent } from './baselayout/header/header.component';
 import { NavigationComponent } from './baselayout/navigation/navigation.component';
-import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { LoginComponent } from './forms/login/login.component';
 import { RegisterComponent } from './forms/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserAproveComponent } from './pages/user-aprove/user-aprove.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { EditProfileComponent } from './forms/edit-profile/edit-profile.component';
 import { ChangepwComponent } from './forms/changepw/changepw.component';
 import { AddDonationComponent } from './forms/add-donation/add-donation.component';
@@ -43,8 +43,8 @@ import { CategorySelectionDialogComponent } from './dialog/category-selection-di
 import { ReceivedDonationsComponent } from './pages/received-donations/received-donations.component';
 import { ReceiptDialogComponent } from './dialog/receipt-dialog/receipt-dialog.component';
 import { ThankYouNoteDialogComponent } from './dialog/thank-you-note-dialog/thank-you-note-dialog.component';
-import { DonationValueDialogComponent } from './dialog/donation-value-dialog/donation-value-dialog.component';
 import { EligibleRecipientsComponent } from './pages/eligible-recipients/eligible-recipients.component';
+import { DonationValueDialogComponent } from './dialog/donation-value-dialog/donation-value-dialog.component';
 import { UnconfirmedDonationsComponent } from './pages/unconfirmed-donations/unconfirmed-donations.component';
 
 export function getSrPaginatorIntl() {
@@ -75,25 +75,25 @@ export function getSrPaginatorIntl() {
     FooterComponent,
     HeaderComponent,
     NavigationComponent,
-    ConfirmationComponent,
     LoginComponent,
     RegisterComponent,
     HomeComponent,
     UsersComponent,
     UserDetailsComponent,
     UserAproveComponent,
+    ConfirmationComponent,
     EditProfileComponent,
     ChangepwComponent,
     AddDonationComponent,
     DonationsComponent,
     DistributedDonationComponent,
     ThankYouNotesComponent,
+    CategorySelectionDialogComponent,
     ReceivedDonationsComponent,
     ReceiptDialogComponent,
     ThankYouNoteDialogComponent,
-    CategorySelectionDialogComponent,
-    DonationValueDialogComponent,
     EligibleRecipientsComponent,
+    DonationValueDialogComponent,
     UnconfirmedDonationsComponent,
   ],
   imports: [

@@ -109,7 +109,7 @@ export class RegisterComponent {
       firstName: this.Fname?.value ?? '',
       lastName: this.Lname?.value ?? '',
       city: this.City?.value ?? '',
-      age: this.Age?.value ?? 18,
+      age: Number(this.Age?.value) ?? 18,
       role: Number(this.Role?.value),
       isAnonymous: this.IsAnonymous?.value ?? false,
       email: this.Email?.value ?? '',

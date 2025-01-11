@@ -179,7 +179,7 @@ export class EditProfileComponent {
         firstName: this.Name?.value ?? '',
         lastName: this.Surname?.value ?? '',
         city: this.City?.value ?? '',
-        age: this.Age?.value ?? 0,
+        age: Number(this.Age?.value) ?? 0,
         isAnonymous: this.showAnonymous
           ? this.isAnonymous?.value ?? false
           : false, // Ako nije Donator, uvek je false
