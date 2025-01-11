@@ -1,0 +1,144 @@
+<form [formGroup]="form">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="text-theme-primary">Izmeni profil</h2>
+      <p>Molimo vas popunite formu kako biste ažurirali svoj profil.</p>
+      <div class="alert alert-danger" *ngIf="error">
+        Došlo je do greške. Pokušajte ponovo.
+      </div>
+      <div class="alert alert-danger" *ngIf="missingDataError">
+        Svi podaci moraju biti ispravno popunjeni pre ažuriranja profila.
+      </div>
+      <div class="alert alert-success" *ngIf="success">
+        Profil je uspešno ažuriran.
+      </div>
+    </div>
+
+    <div class="image-cont">
+      <img
+        *ngIf="!UserService.hasImage()"
+        src="../../../assets/images/profile.jpg"
+        class="round-image"
+      />
+      <img
+        *ngIf="UserService.hasImage()"
+        [src]="user.image"
+        class="round-image"
+      />
+    </div>
+
+    <label for="name"><b>Ime</b></label>
+    <input
+      formControlName="name"
+      type="text"
+      id="name"
+      placeholder="Unesite vaše ime"
+    />
+    <div *ngIf="Name?.touched && Name?.invalid">
+      <div *ngIf="Name?.errors?.['required']" class="alert alert-warning">
+        Ime je obavezno.
+      </div>
+      <div *ngIf="Name?.errors?.['minlength']" class="alert alert-warning">
+        Ime mora imati najmanje 3 karaktera.
+      </div>
+    </div>
+
+    <label for="surname"><b>Prezime</b></label>
+    <input
+      formControlName="surname"
+      type="text"
+      id="surname"
+      placeholder="Unesite vaše prezime"
+    />
+    <div *ngIf="Surname?.touched && Surname?.invalid">
+      <div *ngIf="Surname?.errors?.['required']" class="alert alert-warning">
+        Prezime je obavezno.
+      </div>
+      <div *ngIf="Surname?.errors?.['minlength']" class="alert alert-warning">
+        Prezime mora imati najmanje 3 karaktera.
+      </div>
+    </div>
+
+    <label for="city"><b>Grad</b></label>
+    <input
+      formControlName="city"
+      type="text"
+      id="city"
+      placeholder="Unesite vaš grad"
+    />
+    <div *ngIf="City?.touched && City?.invalid">
+      <div *ngIf="City?.errors?.['required']" class="alert alert-warning">
+        Grad je obavezan.
+      </div>
+      <div *ngIf="City?.errors?.['minlength']" class="alert alert-warning">
+        Grad mora imati najmanje 2 karaktera.
+      </div>
+    </div>
+
+    <label for="age"><b>Godine</b></label>
+    <input
+      formControlName="age"
+      id="age"
+      type="number"
+      placeholder="Unesite vaše godine"
+    />
+    <div *ngIf="Age?.touched && Age?.invalid">
+      <div *ngIf="Age?.errors?.['required']" class="alert alert-warning">
+        Godine su obavezne.
+      </div>
+      <div
+        *ngIf="Age?.errors?.['min'] || Age?.errors?.['max']"
+        class="alert alert-warning"
+      >
+        Godine moraju biti između 18 i 65.
+      </div>
+    </div>
+
+    <label for="image"><b>Postavite sliku</b></label>
+    <input
+      formControlName="image"
+      type="file"
+      accept="image/*"
+      (change)="onImageSelected($event)"
+      class="form-control"
+      id="imageInput"
+    />
+    <div *ngIf="Image?.touched && Image?.invalid">
+      <p *ngIf="Image?.errors?.['required']" class="errors">
+        Slika je obavezna.
+      </p>
+    </div>
+
+    <div *ngIf="showAnonymous" class="isAnonymous">
+      <label for="isAnonymous"><b>Da li želite da ostanete anonimni?</b></label>
+      <input formControlName="isAnonymous" type="checkbox" id="isAnonymous" />
+    </div>
+
+    <div *ngIf="user.role === 1" class="category-selection">
+      <label><b>Kategorije donacija</b></label>
+      <p class="category-info">
+        Izaberite jednu ili više kategorija za koje želite da se prijavite.
+      </p>
+
+      <div class="categories">
+        <div *ngFor="let category of categories" class="category-item">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [checked]="selectedCategories.includes(category.id)"
+              (change)="toggleCategory(category.id)"
+            />
+            <span>{{ category.name }}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <span>
+      <button (click)="updateUser()">Ažuriraj profil</button>
+      <button (click)="openConfirmationDialog()" class="redBtn">
+        Obriši profil
+      </button>
+    </span>
+  </div>
+</form>

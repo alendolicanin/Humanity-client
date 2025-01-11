@@ -1,0 +1,150 @@
+<section class="featured-section" id="section">
+  <div>
+    <div class="row">
+      <div class="text-center">
+        <h1>Lista donacija</h1>
+        <p id="p" *ngIf="role === 0">
+          Pregled svih donacija koje ste kreirali.
+        </p>
+        <p id="p" *ngIf="role === 3 || role === 2">
+          Pregled svih donacija u sistemu.
+        </p>
+        <button
+          class="create-donation-btn"
+          *ngIf="role === 0"
+          (click)="navigateToCreateDonation()"
+        >
+          + Dodaj novu donaciju
+        </button>
+      </div>
+    </div>
+    <br />
+
+    <!-- Filter sekcija -->
+    <div
+      class="filter-container"
+      [ngClass]="{
+        'col-md-9': role === 0,
+        'col-md-7': role === 3 || role === 2
+      }"
+    >
+      <label for="sortBy">Sortiraj po:</label>
+      <select
+        id="sortBy"
+        [(ngModel)]="sortBy"
+        (change)="applyFilters()"
+        class="filter-select"
+      >
+        <option value="DateReceived">Datum primanja</option>
+        <option value="Value">Vrednost</option>
+      </select>
+
+      <label for="isSortAscending">Redosled:</label>
+      <select
+        id="isSortAscending"
+        [(ngModel)]="isSortAscending"
+        (change)="applyFilters()"
+        class="filter-select"
+      >
+        <option [value]="true">Rastući</option>
+        <option [value]="false">Opadajući</option>
+      </select>
+
+      <label for="searchDate">Pretraži po datumu:</label>
+      <input
+        type="date"
+        id="searchDate"
+        [(ngModel)]="searchDate"
+        (change)="applyFilters()"
+        class="filter-input"
+      />
+
+      <label for="categoryFilter">Kategorija:</label>
+      <select
+        id="categoryFilter"
+        [(ngModel)]="selectedCategory"
+        (change)="applyFilters()"
+        class="filter-select"
+      >
+        <option [ngValue]="null">Sve kategorije</option>
+        <option *ngFor="let key of categoryMap | keyvalue" [ngValue]="key.key">
+          {{ key.value }}
+        </option>
+      </select>
+
+      <label *ngIf="role === 3 || role === 2" for="donorName">Donator:</label>
+      <input
+        *ngIf="role === 3 || role === 2"
+        type="text"
+        id="donorName"
+        [(ngModel)]="donorName"
+        (input)="applyFilters()"
+        placeholder="Unesite ime ili prezime"
+        class="filter-input"
+      />
+    </div>
+
+    <div *ngIf="paginatedDonations.length === 0" class="no-donation">
+      <p>Trenutno nema donacija za prikaz.</p>
+    </div>
+    <div class="row donations-container col-md-9" id="donations">
+      <div
+        class="dtn-card"
+        *ngFor="let donation of paginatedDonations"
+        (click)="
+          role === 2
+            ? viewEligibleRecipients(donation)
+            : viewDistributedDonations(donation.id)
+        "
+      >
+        <div class="donation-card" [ngClass]="getDonationStatusClass(donation)">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{
+                getCategoryText(donation.category)
+              }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                <strong>Vrednost:</strong>
+                {{ donation.value | currency : "RSD " : "symbol" }}
+              </p>
+              <p>
+                <strong>Datum primanja:</strong>
+                {{ donation.dateReceived | date : "dd.MM.yyyy" }}
+              </p>
+              <p *ngIf="!donation.isAnonymous && (role === 3 || role === 2)">
+                <strong>Donator:</strong>
+                {{ donation.donorFirstName }} {{ donation.donorLastName }}
+              </p>
+              <p *ngIf="donation.isAnonymous">
+                <strong>Status:</strong> Donacija je anonimna.
+              </p>
+              <span class="badge" [ngClass]="getDonationStatusClass(donation)">
+                {{
+                  donation.value === 0
+                    ? "Kompletno distribuirano"
+                    : donation.isDistributed
+                    ? "Distribuirano"
+                    : "Nije distribuirano"
+                }}
+              </span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginacija -->
+    <div class="pagination-section">
+      <mat-paginator
+        [length]="totalItems"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[6, 12, 18, 24, 30]"
+        (page)="onPageChange($event)"
+        aria-label="Paginacija"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</section>

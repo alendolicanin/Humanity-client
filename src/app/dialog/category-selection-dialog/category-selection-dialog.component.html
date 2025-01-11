@@ -1,0 +1,29 @@
+<div class="category-selection-container">
+  <h2>Izaberite kategorije</h2>
+  <p class="description">
+    Odaberite jednu ili više kategorija donacija za koje želite da se prijavite.
+  </p>
+
+  <div class="categories">
+    <div *ngFor="let category of categories" class="category-item">
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          [checked]="selectedCategories.includes(category.id)"
+          (change)="toggleCategory(category.id)"
+        />
+        <span>{{ category.name }}</span>
+      </label>
+    </div>
+  </div>
+
+  <p class="info">
+    Ako sada ne izaberete kategorije, možete ih kasnije odabrati u sekciji
+    <strong>Izmeni profil</strong>.
+  </p>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="save()">Sačuvaj</button>
+    <button mat-raised-button color="warn" (click)="close()">Zatvori</button>
+  </div>
+</div>

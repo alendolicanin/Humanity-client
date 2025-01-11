@@ -1,0 +1,148 @@
+/* Sekcija za donacije */
+#section {
+  margin: auto;
+}
+
+/* Naslov */
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* Podnaslov */
+#p {
+  margin: auto;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #343a40;
+}
+
+/* Kad nema donacija */
+.no-donation {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.no-donation p {
+  color: white;
+  background-color: gray;
+  padding: 10px;
+  margin: 30px 250px;
+  border-radius: 10px;
+}
+
+/* Dugme za dodavanje donacije */
+.create-donation-btn {
+  display: block;
+  margin: 20px auto;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.create-donation-btn:hover {
+  background-color: #2980b9;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Filter sekcija */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 45px;
+  padding: 10px;
+  background-color: #cccccc;
+  border-radius: 8px;
+}
+
+.filter-container label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.filter-select,
+.filter-input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(49, 77, 137, 0.8);
+}
+
+.filter-input {
+  width: 200px;
+}
+
+/* Kartice za donacije */
+.dtn-card {
+  flex: 1 1 300px;
+  max-width: 320px;
+}
+
+.donation-card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.donation-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Stil za mat-card */
+.mat-card-content {
+  font-size: 1rem;
+  font-weight: normal;
+  color: black;
+}
+
+/* Pozadina za status */
+.badge-success {
+  background-color: #2ecc71;
+}
+
+.badge-warning {
+  background-color: #e67e22;
+}
+
+.badge-danger {
+  background-color: #e74c3c;
+}
+
+/* Prostor između redova donacija */
+#donations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-evenly;
+  margin: auto;
+}
+
+/* Paginacija sekcija */
+.pagination-section {
+  margin-top: 30px;
+  text-align: center;
+}

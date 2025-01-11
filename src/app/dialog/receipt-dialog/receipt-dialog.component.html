@@ -1,0 +1,14 @@
+<div *ngIf="receipt" class="receipt-container">
+  <button class="close-btn" (click)="closeDialog()">✖</button>
+  <h2>Račun za donaciju</h2>
+  <div class="receipt-details">
+    <p><strong>Datum izdavanja:</strong> {{ receipt.dateIssued | date }}</p>
+    <p><strong>Vrednost:</strong> {{ receipt.value | currency : "RSD " }}</p>
+    <p>
+      <strong>Informacije o donatoru:</strong>
+      {{ receipt.donorInfo === "Anonymous" ? "Anonimno" : receipt.donorInfo }}
+    </p>
+    <p><strong>Informacije o primaocu:</strong> {{ receipt.recipientInfo }}</p>
+    <p><strong>Potpis:</strong> {{ receipt.signature }}</p>
+  </div>
+</div>

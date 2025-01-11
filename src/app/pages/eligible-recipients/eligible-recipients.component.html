@@ -1,0 +1,71 @@
+<section class="featured-section col-md-8" id="section">
+  <div>
+    <!-- Poruke -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Prijavljeni primaoci</h1>
+        <p id="p">Lista svih primalaca za odabranu kategoriju donacije.</p>
+      </div>
+    </div>
+    <br />
+
+    <!-- Filter sekcija -->
+    <div class="filter-container">
+      <label for="searchQuery">Pretraga primaoca:</label>
+      <input
+        type="text"
+        id="searchQuery"
+        [(ngModel)]="searchQuery"
+        (input)="applyFilters()"
+        placeholder="Unesite ime ili prezime"
+        class="filter-input"
+      />
+    </div>
+
+    <!-- Lista primalaca -->
+    <div *ngIf="filteredRecipients.length === 0" class="no-users">
+      <p>Trenutno nema korisnika za prikaz.</p>
+    </div>
+    <div class="row justify-content-center" id="users">
+      <div class="col-lg-5" *ngFor="let recipient of filteredRecipients">
+        <div class="user-card">
+          <mat-card>
+            <mat-card-content>
+              <div class="recipient-info">
+                <img
+                  [src]="
+                    recipient.image || '../../../assets/images/profile.jpg'
+                  "
+                  alt="Profilna slika"
+                  class="profile-image"
+                />
+                <div>
+                  <p><strong>Ime:</strong> {{ recipient.firstName }}</p>
+                  <p><strong>Prezime:</strong> {{ recipient.lastName }}</p>
+                  <p><strong>Grad:</strong> {{ recipient.city }}</p>
+                  <p><strong>Godine:</strong> {{ recipient.age }}</p>
+                  <p><strong>E-mail:</strong> {{ recipient.email }}</p>
+                </div>
+              </div>
+              <button
+                mat-raised-button
+                class="donation-button"
+                (click)="openDonationValueDialog(recipient)"
+              >
+                Pošalji donaciju
+              </button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</section>

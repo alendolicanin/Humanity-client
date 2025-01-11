@@ -1,0 +1,39 @@
+<div class="dialog-container">
+  <h1 class="dialog-title">Unesite iznos donacije</h1>
+  <div class="dialog-content">
+    <p class="dialog-description">
+      Molimo unesite iznos donacije. Maksimalni iznos:
+      <strong>{{ data.maxDonationValue }}</strong
+      >.
+    </p>
+    <mat-form-field class="input-field">
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="donationValue"
+        [min]="0"
+        [max]="data.maxDonationValue"
+        placeholder="Unesite iznos"
+      />
+      <mat-error
+        *ngIf="donationValue > data.maxDonationValue || donationValue < 0"
+      >
+        Unesite validan iznos (0 - {{ data.maxDonationValue }}).
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="dialog-actions">
+    <button mat-button class="cancel-button" (click)="onCancel()">
+      Otkaži
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="confirm-button"
+      [disabled]="!isValid()"
+      (click)="onConfirm()"
+    >
+      Potvrdi
+    </button>
+  </div>
+</div>

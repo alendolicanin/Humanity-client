@@ -1,0 +1,40 @@
+<div class="donations-container">
+  <h2>Donacije za potvrdu</h2>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-warning">
+    {{ errorMessage }}
+  </div>
+
+  <div class="donations-grid">
+    <div *ngFor="let donation of unconfirmedDonations" class="donation-card">
+      <div class="donation-details">
+        <p class="category">
+          <strong>Kategorija:</strong>
+          {{ translateCategory(donation.category) }}
+        </p>
+        <p class="value">
+          <strong>Vrednost:</strong>
+          {{ donation.value | currency : "RSD " : "symbol" }}
+        </p>
+        <p class="date">
+          <strong>Datum distribucije:</strong>
+          {{ donation.dateDistributed | date }}
+        </p>
+      </div>
+      <div class="donation-actions">
+        <button
+          mat-raised-button
+          color="warn"
+          class="confirm-button"
+          (click)="confirmDonation(donation.receipt.id)"
+        >
+          Potvrdi/Potpiši prijem
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

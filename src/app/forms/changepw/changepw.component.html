@@ -1,0 +1,111 @@
+<form [formGroup]="form">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="text-theme-primary">Promeni lozinku</h2>
+      <p>Molimo vas da popunite ovu formu za promenu lozinke.</p>
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+
+    <label for="oldPassword"><b>Stara lozinka</b></label>
+    <input
+      formControlName="oldPassword"
+      id="oldPassword"
+      type="password"
+      placeholder="Unesite vašu staru lozinku"
+    />
+    <div *ngIf="oldPassword?.touched && oldPassword?.invalid">
+      <div
+        *ngIf="oldPassword?.errors?.['required']"
+        class="alert alert-warning"
+      >
+        Stara lozinka je obavezna.
+      </div>
+    </div>
+
+    <label for="newPassword"><b>Nova lozinka</b></label>
+    <input
+      formControlName="newPassword"
+      id="newPassword"
+      type="password"
+      placeholder="Unesite vašu novu lozinku"
+    />
+    <p class="pass-info">
+      Lozinka mora sadržavati najmanje: jedno veliko slovo, jedan broj i jedan
+      poseban znak. Mora imati najmanje 8 karaktera i ne sme sadržavati razmake.
+    </p>
+    <div *ngIf="newPassword?.touched && newPassword?.invalid">
+      <div
+        *ngIf="newPassword?.errors?.['required']"
+        class="alert alert-warning"
+      >
+        Nova lozinka je obavezna.
+      </div>
+      <div
+        *ngIf="newPassword?.errors?.['minlength']"
+        class="alert alert-warning"
+      >
+        Nova lozinka mora imati najmanje 8 karaktera.
+      </div>
+      <div
+        *ngIf="newPassword?.errors?.['maxlength']"
+        class="alert alert-warning"
+      >
+        Nova lozinka može imati najviše 16 karaktera.
+      </div>
+      <div
+        class="alert alert-warning"
+        *ngIf="newPassword?.errors?.['cannotContaintSpace']"
+      >
+        Ne sme sadržavati razmake.
+      </div>
+      <div
+        class="alert alert-warning"
+        *ngIf="newPassword?.errors?.['upperCase']"
+      >
+        Mora sadržavati veliko slovo.
+      </div>
+      <div class="alert alert-warning" *ngIf="newPassword?.errors?.['number']">
+        Mora sadržavati jedan broj.
+      </div>
+      <div
+        class="alert alert-warning"
+        *ngIf="newPassword?.errors?.['specialCaracter']"
+      >
+        Mora sadržavati jedan poseban znak.
+      </div>
+    </div>
+
+    <label for="confirmPassword"><b>Potvrdite lozinku</b></label>
+    <input
+      formControlName="confirmPassword"
+      id="confirmPassword"
+      type="password"
+      placeholder="Potvrdite vašu lozinku"
+    />
+    <div
+      *ngIf="confirmPassword?.touched && (confirmPassword?.invalid || form?.errors?.['passwordMismatch'])"
+    >
+      <div
+        *ngIf="confirmPassword?.errors?.['required']"
+        class="alert alert-warning"
+      >
+        Potvrda lozinke je obavezna.
+      </div>
+      <div
+        *ngIf="form?.errors?.['passwordMismatch']"
+        class="alert alert-warning"
+      >
+        Lozinke se ne poklapaju.
+      </div>
+    </div>
+
+    <span>
+      <button (click)="openConfirmationDialog()">Promeni lozinku</button>
+    </span>
+  </div>
+</form>

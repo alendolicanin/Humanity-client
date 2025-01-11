@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Zahvalnice od primalaca</h2>
+  <p *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</p>
+
+  <div *ngIf="thankYouNotes.length > 0" class="thank-you-notes-list">
+    <div *ngFor="let note of thankYouNotes" class="thank-you-note-card">
+      <div class="header">
+        <h3>{{ note.senderName }}</h3>
+        <span
+          class="rating"
+          [ngStyle]="{ 'background-color': getRatingColor(note.rating) }"
+          >{{ note.rating }} / 10</span
+        >
+      </div>
+      <p class="message"><strong>Poruka:</strong> {{ note.message }}</p>
+    </div>
+  </div>
+</div>

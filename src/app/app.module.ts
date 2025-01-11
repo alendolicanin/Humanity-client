@@ -33,6 +33,19 @@ import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserAproveComponent } from './pages/user-aprove/user-aprove.component';
+import { EditProfileComponent } from './forms/edit-profile/edit-profile.component';
+import { ChangepwComponent } from './forms/changepw/changepw.component';
+import { AddDonationComponent } from './forms/add-donation/add-donation.component';
+import { DonationsComponent } from './pages/donations/donations.component';
+import { DistributedDonationComponent } from './pages/distributed-donation/distributed-donation.component';
+import { ThankYouNotesComponent } from './pages/thank-you-notes/thank-you-notes.component';
+import { CategorySelectionDialogComponent } from './dialog/category-selection-dialog/category-selection-dialog.component';
+import { ReceivedDonationsComponent } from './pages/received-donations/received-donations.component';
+import { ReceiptDialogComponent } from './dialog/receipt-dialog/receipt-dialog.component';
+import { ThankYouNoteDialogComponent } from './dialog/thank-you-note-dialog/thank-you-note-dialog.component';
+import { DonationValueDialogComponent } from './dialog/donation-value-dialog/donation-value-dialog.component';
+import { EligibleRecipientsComponent } from './pages/eligible-recipients/eligible-recipients.component';
+import { UnconfirmedDonationsComponent } from './pages/unconfirmed-donations/unconfirmed-donations.component';
 
 export function getSrPaginatorIntl() {
   const paginatorIntl = new MatPaginatorIntl();
@@ -69,6 +82,19 @@ export function getSrPaginatorIntl() {
     UsersComponent,
     UserDetailsComponent,
     UserAproveComponent,
+    EditProfileComponent,
+    ChangepwComponent,
+    AddDonationComponent,
+    DonationsComponent,
+    DistributedDonationComponent,
+    ThankYouNotesComponent,
+    ReceivedDonationsComponent,
+    ReceiptDialogComponent,
+    ThankYouNoteDialogComponent,
+    CategorySelectionDialogComponent,
+    DonationValueDialogComponent,
+    EligibleRecipientsComponent,
+    UnconfirmedDonationsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,42 @@
+<div class="donations-container">
+  <h2>Pregled primljenih donacija</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-warning">
+    {{ errorMessage }}
+  </div>
+
+  <div class="donations-grid">
+    <div *ngFor="let donation of donations" class="donation-card">
+      <div class="donation-details">
+        <p class="category">
+          <strong>Kategorija:</strong>
+          {{ translateCategory(donation.category) }}
+        </p>
+        <p class="value">
+          <strong>Vrednost:</strong>
+          {{ donation.value | currency : "RSD " : "symbol" }}
+        </p>
+        <p class="date">
+          <strong>Datum distribucije:</strong>
+          {{ donation.dateDistributed | date }}
+        </p>
+      </div>
+      <div class="donation-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="viewDetails(donation.receipt.id)"
+        >
+          Prikaži račun
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="sendThankYouNote(donation.donorId)"
+        >
+          Pošalji zahvalnicu
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

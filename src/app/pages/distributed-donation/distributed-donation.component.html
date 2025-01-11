@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Detalji o distribucijama donacije</h2>
+  <p *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</p>
+
+  <div *ngIf="distributedDonations.length > 0" class="distributed-list">
+    <div
+      *ngFor="let distribution of distributedDonations"
+      class="distribution-card"
+    >
+      <p>
+        <strong>Primalac:</strong>
+        {{ distribution.recipientFirstName }}
+        {{ distribution.recipientLastName }}
+      </p>
+      <p>
+        <strong>Datum distribucije:</strong>
+        {{ distribution.dateDistributed | date : "dd.MM.yyyy" }}
+      </p>
+      <p>
+        <strong>Vrednost:</strong> {{ distribution.value | currency : " RSD " }}
+      </p>
+      <button
+        *ngIf="isAdmin"
+        mat-raised-button
+        color="primary"
+        (click)="viewDetails(distribution.receipt.id)"
+      >
+        Prikaži račun
+      </button>
+    </div>
+  </div>
+</div>
